@@ -57,7 +57,8 @@ void Solution::sortColors(vector<int>& nums){
     while(j >= 0 && nums[j] == 2) j--;
 
     for(int i = k ;i <= j; i++){
-        if(nums[i] == 0){
+
+        if(nums[i] < 2){
             if(nums[i] != nums[k]){
                 swap(nums[i], nums[k++]);
                 i--;
