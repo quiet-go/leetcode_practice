@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1605592940 source:d:\c++_workspace\lcdemo\main.cpp
+	<iostream>
+	<vector>
+	"Solution.h"
+
+1605592980 source:d:\c++_workspace\lcdemo\solution.cpp
+	<vector>
+	"Solution.h"
+	<iostream>
+
+1605583878 d:\c++_workspace\lcdemo\solution.h
+	<vector>
+
