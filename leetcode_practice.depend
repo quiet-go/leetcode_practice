@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1606544282 source:c:\workspace\leetcode_practice\main.cpp
+	<iostream>
+	<vector>
+	"Solution.h"
+
+1606543229 c:\workspace\leetcode_practice\solution.h
+	<vector>
+
+1606542487 source:c:\workspace\leetcode_practice\solution.cpp
+	<vector>
+	"Solution.h"
+	<iostream>
+

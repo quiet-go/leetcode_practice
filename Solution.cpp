@@ -76,3 +76,82 @@ void Solution::sortColors(vector<int>& nums){
         }
     }
 }
+
+//合并后两个有序数组
+void Solution::merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+
+        if(m <= 0){
+            nums1 = nums2;
+            return;
+        }
+
+        if(n <= 0){
+            return;
+        }
+
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n -1;
+        while(k >= 0){
+            if(i >= 0){
+                if(j >= 0 && nums1[i] <= nums2[j]){
+                    nums1[k--] = nums2[j--];
+                }else{
+                    nums1[k--] = nums1[i--];
+                }
+            }else{
+                nums1[k--] = nums2[j--];
+            }
+        }
+}
+
+int quickSort(vector<int>& nums, int l, int r);
+
+int Solution::findKthLargest(vector<int>& nums, int k){
+    if(nums.size() == 0){
+        return 0;
+    }else if(nums.size() == 1){
+        return nums[0];
+    }
+
+    //基于快速排序的方法
+    int l = 0;
+    int r = nums.size() - 1;
+    int mid = (r - l) / 2 + l;
+    while(mid != nums.size() - k){
+        mid = (r - l) / 2 + l;
+        while(mid != nums.size() - k){
+            mid = (r - l) / 2 + l;
+            while(l < r){
+                while(l < r && nums[l] < nums[mid])
+                    l++;
+                while(r > l && nums[r] >= nums[mid])
+                    r--;
+                if(l < r){
+                    swap(nums[l], nums[r]);
+                }
+            }
+
+            if(mid < nums.size() - k){
+                l = mid + 1;;
+            }else if(mid > nums.size() - k){
+                r = mid - 1;
+            }
+            swap(nums[l], nums[mid]);
+        }
+    }
+}
+
+int quickSort(vector<int>& nums, int l, int r){
+    int mid = (r - l) / 2 +l;
+    while(l < r){
+        while(nums[l] < nums[mid])
+            l++;
+        while(nums[r] >= nums[mid])
+            r--;
+        if(l < r){
+            swap(nums[l], nums[r]);
+        }
+    }
+    return l;
+}
