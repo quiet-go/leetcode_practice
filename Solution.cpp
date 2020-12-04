@@ -117,29 +117,37 @@ int Solution::findKthLargest(vector<int>& nums, int k){
     //基于快速排序的方法
     int l = 0;
     int r = nums.size() - 1;
-    int mid = (r - l) / 2 + l;
-    while(mid != nums.size() - k){
-        mid = (r - l) / 2 + l;
-        while(mid != nums.size() - k){
-            mid = (r - l) / 2 + l;
-            while(l < r){
-                while(l < r && nums[l] < nums[mid])
-                    l++;
-                while(r > l && nums[r] >= nums[mid])
-                    r--;
-                if(l < r){
-                    swap(nums[l], nums[r]);
-                }
+    int mid;
+    while(l <= r && mid != nums.size() - k){
+        mid = l;
+        int l1 = l + 1;
+        int r1 = r;
+        while(l1 < r1){
+            while(l1 < r1 && nums[l1] < nums[mid]){
+                l1++;
             }
 
-            if(mid < nums.size() - k){
-                l = mid + 1;;
-            }else if(mid > nums.size() - k){
-                r = mid - 1;
+            while(l1 < r1 && nums[r1] >= nums[mid]){
+                r1--;
             }
-            swap(nums[l], nums[mid]);
+
+            if(l1 < r1){
+                swap(nums[l1], nums[r1]);
+            }
         }
+
+        swap(nums[l1], nums[mid]);
+        mid = l1;
+
+        if(mid < nums.size() - k){
+            l = mid + 1;
+        }else if(mid > nums.size() - k){
+            r = mid - 1;
+        }
+
     }
+
+    return nums[mid];
 }
 
 int quickSort(vector<int>& nums, int l, int r){

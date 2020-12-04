@@ -13,6 +13,6 @@ public:
     //88
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);
 
-    //215
+    //215，可以尝试使用堆排序
     int findKthLargest(vector<int>& nums, int k);
 };
